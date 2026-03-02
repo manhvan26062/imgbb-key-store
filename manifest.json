@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Greetbuy Product Saver",
+  "version": "1.0.0",
+  "description": "Lưu thông tin sản phẩm từ greetbuy.com vào bộ nhớ cục bộ của Chrome.",
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "host_permissions": ["https://www.greetbuy.com/*"],
+  "action": {
+    "default_title": "Greetbuy Product Saver",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.greetbuy.com/goods/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
